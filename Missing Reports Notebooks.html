@@ -11880,38 +11880,42 @@ VALUE $NM_MISSLABEL
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>/<strong><strong><strong><strong>*</strong></strong></strong></strong>
-Mockup data
-<strong><strong><strong><strong>**</strong></strong></strong></strong>/
-DATA SAMPLE;
-    INFILE DATALINES DSD MISSOVER DELIMITER=',';
-    INFORMAT USERID$5. NAME$100. GENDER$1. BIRTHDATE$8. EFFECTIVEDATE$8. EXPIRYDATE$8. PHONE$12. EMAIL$100.;
-    INPUT USERID$ NAME$ GENDER$ BIRTHDATE$ EFFECTIVEDATE$ EXPIRYDATE$ PHONE$ EMAIL$;
-DATALINES;
-C0001,Abel,M,99999999,20140102,20140112,NA,n.a
-C0002,Maggie,F,99999999,20140105,,NA,<em>
-C0003,John,M,99999999,20140107,20140125,NA,</em>
-C0004,Rose,M,99999999,20140107,99999999,345-466-4467,unknown
-C0005,Greoge,M,19910116,20140108,20140205,,Greoge@somedomain.com
-C0006,Luisa,F,20001010,20140109,20140118,,n/a
-C0007,Carol,U,20011212,99999999,20140115,345-466-2367,email@domain.com
-C0008,James,U,19701212,20140112,20140115,,email@domain.com
-C0009,-,U,,,20140121,345-466-4467,email@domain.com
-C0010,-,U,19800725,20140115,99999999,,n/a
-C0011,Beth,F,20010830,20140117,20140117,,Beth@somedomain.com
-C0012,Charle,,,,20140124,345-466-4888,n.a
-C0013,Michael,,,20140121,20140122,,Michael@somedomain.com
-C9999,TESTUSER,U,99999999,20140126,,345-645-4467,n/a
-C9999,TESTUSER,U,99999999,20140128,20140129,,n/a
-;
-RUN;</p>
+    <div class="input_area">
+<div class=" highlight hl-sas"><pre><span></span><span class="cm">/*****************</span>
+<span class="cm">Mockup data</span>
+<span class="cm">******************/</span>
+<span class="kr">DATA </span>SAMPLE;
+    <span class="k">INFILE</span> <span class="k">DATALINES</span> DSD MISSOVER <span class="k">DELIMITER</span>=<span class="s">&#39;,&#39;</span>;
+    <span class="k">INFORMAT</span> USERID$<span class="m">5</span>. NAME$<span class="m">100</span>. GENDER$<span class="m">1</span>. BIRTHDATE$<span class="m">8</span>. EFFECTIVEDATE$<span class="m">8</span>. EXPIRYDATE$<span class="m">8</span>. PHONE$<span class="m">12</span>. EMAIL$<span class="m">100</span>.;
+    <span class="k">INPUT</span> USERID$ NAME$ GENDER$ BIRTHDATE$ EFFECTIVEDATE$ EXPIRYDATE$ PHONE$ EMAIL$;
+<span class="k">DATALINES;</span><span class="x"></span>
+<span class="x">C0001,Abel,M,99999999,20140102,20140112,NA,n.a</span>
+<span class="x">C0002,Maggie,F,99999999,20140105,,NA,*</span>
+<span class="x">C0003,John,M,99999999,20140107,20140125,NA,*</span>
+<span class="x">C0004,Rose,M,99999999,20140107,99999999,345-466-4467,unknown</span>
+<span class="x">C0005,Greoge,M,19910116,20140108,20140205,,Greoge@somedomain.com</span>
+<span class="x">C0006,Luisa,F,20001010,20140109,20140118,,n/a</span>
+<span class="x">C0007,Carol,U,20011212,99999999,20140115,345-466-2367,email@domain.com</span>
+<span class="x">C0008,James,U,19701212,20140112,20140115,,email@domain.com</span>
+<span class="x">C0009,-,U,,,20140121,345-466-4467,email@domain.com</span>
+<span class="x">C0010,-,U,19800725,20140115,99999999,,n/a</span>
+<span class="x">C0011,Beth,F,20010830,20140117,20140117,,Beth@somedomain.com</span>
+<span class="x">C0012,Charle,,,,20140124,345-466-4888,n.a</span>
+<span class="x">C0013,Michael,,,20140121,20140122,,Michael@somedomain.com</span>
+<span class="x">C9999,TESTUSER,U,99999999,20140126,,345-645-4467,n/a</span>
+<span class="x">C9999,TESTUSER,U,99999999,20140128,20140129,,n/a</span>
+<span class="x">;</span>
+<span class="kr">RUN;</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
