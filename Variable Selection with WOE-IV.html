@@ -11815,8 +11815,8 @@ div#notebook {
 <p>As a rule of thumb, IV and predictiveness are shown follow:-
 <img src="./images/iv_rthb.png" ></p>
 <p>It is important to note that IV is merely a tool to suggest that a variable <em>maybe</em> predictive, it is not necessarily  mean that it will <em>stay</em> in the model. IV also has one very intriguing application, that is, not only that we can use IV to shortlist potential variable, we can also transform a raw variable to <b>WOE-Transformed variable</b> and use it as an input in a model.</p>
-<p><img src="./images/woe_trans.png" >
-As shown in the above picture, a raw data that is &gt;401 will can be recoded with -0.2123.<br>
+<p><img src="./images/woe_trans.PNG" ></p>
+<p>As shown in the above picture, a raw data that is &gt;401 will can be recoded with -0.2123.<br>
 <br><b>Benefits of WOE transformation</b></p>
 <ol>
 <li>Variable Reduction</li>
@@ -14748,8 +14748,8 @@ a:visited { color: #800080 }
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-sas"><pre><span></span><span class="c">*The following is an WOE by each BIN, of each variable. As illustrated here, &#39;female&#39; raw value can also be replaced with -1.52988;</span>
-<span class="kr">PROC PRINT </span>DATA=SOURCE_WOE<span class="kr">;RUN;</span>
+<div class=" highlight hl-sas"><pre><span></span><span class="cm">*The following is an WOE by each BIN, of each variable.</span>
+<span class="cm">PROC PRINT DATA=SOURCE_WOE;</span>RUN<span class="kr">;</span>
 <span class="kr">PROC PRINT </span>DATA=SOURCE_WOEFMT<span class="kr">;RUN;</span>
 </pre></div>
 
