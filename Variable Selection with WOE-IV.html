@@ -11828,7 +11828,7 @@ div#notebook {
 <br><em>Evidence in Favor of Weight of Evidence and Binning Transformations for Predictive Modelling.</em></p>
 <p><p>In this post, I demonstrate WOE/IV calculation to 2 parts</p></p>
 <ul>
-    <li><b>Part-1: Basic</b> - A simple macro to calculate IV for a numeric variable and a charecter variable</li>
+    <li><b>Part-1: Basic</b> - A simple macro to calculate IV for a numeric variable and a categorical variable</li>
     <li><b>Part-2: Advanced</b> - By utilising the power of <code>DO_OVER</code> macro, published by <a href="http://www2.sas.com/proceedings/sugi31/040-31.pdf">Ted Clay</a>. <br>I demonstrate how to fully automate WOE/IV calcualtion</li>
 </ul>
 </div>
@@ -11848,7 +11848,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><font face="Verdana, cursive, sans-serif" >
-<b>First, let's execute Ted Clay macros and MISSING_REPORTS macros</b></p>
+<b>First, let's execute Ted Clay macros </b></p>
 
 </div>
 </div>
@@ -11876,7 +11876,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><font face="Verdana, cursive, sans-serif" >
-<b>let's use the same mockup data as an example</b></p>
+<b>let's use TITANIC as an example</b></p>
 
 </div>
 </div>
@@ -11932,7 +11932,8 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><font face="Verdana, cursive, sans-serif" ></p>
 <p><H3>Macro to calculate WOE/IV for CHARECTER</H3>
-The following macro is the exact calculation shown in excel, only implemented in SQL</p>
+The following macro is the exact calculation shown in excel, only implemented in MACRO/SQL.<br>
+SQL Logic is credited to <a href="https://www.youtube.com/watch?v=BI5sZn5KhMY"> Analytic University </a></p>
 
 </div>
 </div>
@@ -14748,8 +14749,8 @@ a:visited { color: #800080 }
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-sas"><pre><span></span><span class="cm">*The following is an WOE by each BIN, of each variable.</span>
-<span class="cm">PROC PRINT DATA=SOURCE_WOE;</span>RUN<span class="kr">;</span>
+<div class=" highlight hl-sas"><pre><span></span><span class="c">*The following is an WOE by each BIN, of each variable.;</span>
+<span class="kr">PROC PRINT </span>DATA=SOURCE_WOE<span class="kr">;RUN;</span>
 <span class="kr">PROC PRINT </span>DATA=SOURCE_WOEFMT<span class="kr">;RUN;</span>
 </pre></div>
 
@@ -27313,6 +27314,22 @@ a:visited { color: #800080 }
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><font face="Verdana, cursive, sans-serif" ></p>
+<p><H3>Conclusion</H3>
+<br>
+With WOE/IV techniques, missing/invalid values problems can be alleviated. The above WOE table also serve as a dictionary for WOE transformation. We can see from the above table that missing/invalid values are allocated in one of the bins. With missing values taken care of, we have more choices for variable selection.</p>
+<p><br>Let's take <b>AGE</b> as an example</p>
+<ol>
+<li>Recode raw AGE to AGE_WOE. For example if AGE bin=3 is selected, missing value will be recoded with 0.40378, AGE between [0.42-22] will be recoded as -0.16791, so on and so forth, AGE_WOE is to be treated as numeric variable</li>
+<li>Recode raw AGE to AGE_BIN. As shown in the below sample with <code>PUT()</code>. AGE_BIN is to be treated as categorical variable</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
@@ -27328,22 +27345,6 @@ AGE_BIN = <span class="k">PUT</span>(AGE,AGE_BIN.)<span class="kr">;</span>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><font face="Verdana, cursive, sans-serif" ></p>
-<p><H3>Conclusion</H3>
-<br>
-With WOE/IV techniques, missing/invalid values problems can be alleviated. The above WOE table also serve as a dictionary for WOE transformation. We can see from the above table that missing/invalid values are allocated in one of the bins. With missing values taken care of, we have more choices for variable selection. T</p>
-<p><br>Let's take <b>AGE</b> as an example</p>
-<ol>
-<li>Recode raw AGE to AGE_WOE. For example if AGE bin=3 is selected, missing value will be recoded with 0.40378, AGE between [0.42-22] will be recoded as -0.16791, so on and so forth, AGE_WOE is to be treated as numeric variable</li>
-<li>Recode raw AGE to AGE_BIN. As shown in the below sample with <code>PUT()</code>. AGE_BIN is to be treated as charecter variable</li>
-</ol>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
