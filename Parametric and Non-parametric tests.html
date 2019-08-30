@@ -13119,11 +13119,11 @@ div#notebook {
 <p><font face="Verdana, cursive, sans-serif" ></p>
 <center><H1>Parametric and Non-parametric tests</H1></center><center><H2><font color='darkred'>How to quickly identify potential changes in the behavior of a service provider</font></H2></center><p>This documentation is powered by <b>Jupyter Notebooks</b>. To learn more about how to code SAS in Jupyter Notebooks environment, please refer to <a href="https://github.com/sassoftware/sas_kernel">SAS Kernel for Jupyter</a>. Please note that you - DO NOT -  required to have Python or Jupyter Notebooks in order to utilize these <b>SAS</b> macros.</p><p>Imagine you have thousands of service providers(hospitals, clinics, labs, garages, etc..), how can we prioritize and pick ones for auditing/investigating?</p><p>There are numbers of reasons that the costs of services would changes: increases or decreases, but before we even deep dive into the reason <b>why?</b> we first need to identify <b>who?</b>. Luckily, we have plenty of statistical tools that can help address the later problem. The former problem, however, is not as straight forward as the other one but still possible with helps from subject matter experts(SMEs)...</p><H3>The Who?</H3><p>The key to understanding data is to understand its distribution. The shape of the distribution is usually governed by a few parameters. The one most commonly known distribution is Gaussian distribution, aka normal distribution, of which the shape of the distribution is governed by the mean and the variance.</p>
 <p>The mean(+ or -) moves the bell curve to the (right or left), while the variance(high or low) controls the spread(wide or narrow) of the bell curve.
-<img src="./images/normal.PNG" >
+<img src="./images/normal.png" >
 ref: <a href="https://en.wikipedia.org/wiki/Normal_distribution">https://en.wikipedia.org/wiki/Normal_distribution</a></p>
 <p>That is, if we would like to know whether 2 variable is randomly sampling from the same normally distributed population, we test whether the 2 distributions are statistically different or not.
 <br>If the data is continuous, and the normal distribution assumption holds, the following are the common parametric tests that we can choose from...
-<img src="./images/ttest.PNG" style="width: 50%">
+<img src="./images/ttest.png" style="width: 50%">
 ref: <a href="http://www.indiana.edu/~statmath/">http://www.indiana.edu/~statmath/</a></p>
 <p><table >
   <tr>
@@ -13178,7 +13178,7 @@ ref: <a href="http://www.indiana.edu/~statmath/">http://www.indiana.edu/~statmat
 <p><strong> Very very important note </strong>
 Non-parametric tests are distribution-free, not assumption-free. 
 Other assumption like randomness, iid, and etc still stands - please study carefully full explanation <a href="http://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_nonparametric/BS704_Nonparametric_print.html">here</a>.</p>
-<p><img src="./images/comp.PNG" style="width: 70%" >
+<p><img src="./images/comp.png" style="width: 70%" >
 An example of a service provider. By comparing claim costs 2016 vs. 2017, it seems that the year 2017 has more expensive claims. Wilcoxon tests also confirm that the two distribution are statistically different. The mean and median of 2017 also increases.</p>
 
 </div>
@@ -13210,8 +13210,8 @@ An example of a service provider. By comparing claim costs 2016 vs. 2017, it see
 
 <span class="kr">DATA </span>WORK<span class="m">.</span>CLAIMDATA ;
 <span class="k">INFILE</span> <span class="s">&quot;C:\sasdata\claimdata_mockup.csv&quot;</span> <span class="k">DELIMITER</span>	= <span class="s">&#39;,&#39;</span> MISSOVER DSD LRECL=<span class="m">32767</span> FIRSTOBS=<span class="m">2</span>;
-<span class="k">INFORMAT</span> Provider $<span class="m">1</span>.  ClaimAmt Los Extreme best32. ICD$<span class="m">4</span>. Year best32.;
-<span class="k">INPUT</span> Provider$ ClaimAmt Los Extreme ICD$ Year<span class="kr">;</span>
+<span class="k">INFORMAT</span> Provider $<span class="m">1</span>.  ClaimAmt Los best32. Year best32.;
+<span class="k">INPUT</span> Provider$ ClaimAmt Los Year<span class="kr">;</span>
 <span class="kr">RUN;</span>
 
 <span class="kr">PROC SORT </span>DATA=CLAIMDATA; <span class="k">BY</span> Provider Year <span class="kr">;RUN;</span>
